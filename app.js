@@ -27,6 +27,26 @@ app.get('/:id', (req, res) => {
     }
     res.status(200).send(result);
   });
+});
+
+app.put('/:id', (req, res) => {
+  db.query(`UPDATE TABLE Planets SET ? WHERE id = ${req.params.id}`, req.body, (err, result) => {
+    if(err) {
+      console.log(err);
+      res.sendStatus(400);
+    }
+    res.status(200).send(`La planète N°${req.params.id} a bien été modifiée !`);
+  });
+})
+
+app.delete('/:id', (req, res) => {
+  db.query(`DELETE FROM Planets WHERE id = ${req.params.id}`, (err,result) => {
+    if(err) {
+      console.log(err);
+      res.sendStatus(400);
+    }
+    res.status(200).send(`La planète N°${req.params.id} a bien été supprimée !`);
+  })
 })
 
 app.post('/', (req, res) => {
@@ -37,7 +57,7 @@ app.post('/', (req, res) => {
     }
     res.status(200).send('Planète correctement ajoutée à la BDD !');
   });
-})
+});
 
 app.listen(port, () => {
   console.log(`Le serveur écoute sur le port ${port} !`);
