@@ -13,6 +13,16 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/:id', (req, res) => {
+  db.query(`SELECT * FROM Moons WHERE ?`, req.params.id, (err, result) => {
+    if(err) {
+      console.log(err);
+      res.sendStatus(400);
+    }
+    res.status(200).send(result);
+  });
+});
+
 router.post('/', (req, res) => {
   db.query(`INSERT INTO Moons SET ?`, req.body, (err, result) => {
     if(err) {

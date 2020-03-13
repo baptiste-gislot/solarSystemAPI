@@ -6,7 +6,13 @@ CREATE TABLE IF NOT EXISTS `Planets` (
   type VARCHAR(255) NOT NULL,
   mass INT NOT NULL,
   gravity FLOAT NOT NULL,
-  radius INT NOT NULL
+  radius INT NOT NULL,
+  speed INT NOT NULL,
+  revolution INT NOT NULL,
+  aphelie INT NOT NULL,
+  periphelie INT NOT NULL,
+  discovered_by VARCHAR(255) NOT NULL,
+  discovered_time VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS `Moons` (
@@ -16,6 +22,18 @@ CREATE TABLE IF NOT EXISTS `Moons` (
   mass INT NOT NULL,
   gravity FLOAT NOT NULL,
   radius INT NOT NULL,
+  speed INT NOT NULL,
   fk_planet_id INT,
   FOREIGN KEY (fk_planet_id) REFERENCES Planets(id)
 );
+
+CREATE TABLE IF NOT EXISTS `Suns` (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  type VARCHAR(255) NOT NULL,
+  mass INT NOT NULL,
+  gravity INT NOT NULL,
+  temp INT NOT NULL,
+  radius INT NOT NULL,
+  speed INT NOT NULL
+)
