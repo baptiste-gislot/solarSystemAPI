@@ -1,39 +1,25 @@
 USE solar_system;
 
-CREATE TABLE IF NOT EXISTS `Planets` (
+CREATE TABLE IF NOT EXISTS `Bodies` (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   type VARCHAR(255) NOT NULL,
-  mass INT NOT NULL,
+  moons VARCHAR(255),
+  semimajorAxis BIGINT ,
+  periphelion INT ,
+  aphelion INT ,
+  eccentricity FLOAT ,
+  inclination FLOAT NOT NULL,
+  mass BIGINT NOT NULL,
+  vol BIGINT,
+  density FLOAT NOT NULL,
   gravity FLOAT NOT NULL,
-  radius INT NOT NULL,
-  speed INT NOT NULL,
-  revolution INT NOT NULL,
-  aphelie INT NOT NULL,
-  periphelie INT NOT NULL,
-  discovered_by VARCHAR(255) NOT NULL,
-  discovered_time VARCHAR(255) NOT NULL
+  escape FLOAT NOT NULL,
+  meanRadius INT NOT NULL,
+  equaRadius INT NOT NULL,
+  polarRadius INT NOT NULL,
+  sideralOrbit FLOAT,
+  sideralRotation FLOAT,
+  discoveredBy VARCHAR(255),
+  discoveryDate VARCHAR(255)
 );
-
-CREATE TABLE IF NOT EXISTS `Moons` (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  type VARCHAR(255) NOT NULL,
-  mass INT NOT NULL,
-  gravity FLOAT NOT NULL,
-  radius INT NOT NULL,
-  speed INT NOT NULL,
-  fk_planet_id INT,
-  FOREIGN KEY (fk_planet_id) REFERENCES Planets(id)
-);
-
-CREATE TABLE IF NOT EXISTS `Suns` (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  type VARCHAR(255) NOT NULL,
-  mass INT NOT NULL,
-  gravity INT NOT NULL,
-  temp INT NOT NULL,
-  radius INT NOT NULL,
-  speed INT NOT NULL
-)
