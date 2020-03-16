@@ -33,6 +33,8 @@ router.get('/', (req, res) => {
           res.status(200).json(result);
         });
         break;
+      default:
+        res.status(400).send('Bad option');
     }
   } else {
     db.query('SELECT * FROM Bodies;', (err, result) => {
